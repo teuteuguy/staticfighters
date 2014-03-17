@@ -7,3 +7,7 @@
 .nomargins {
 	margin: 0px;
 }
+
+.panel-body {
+	padding:0px;
+}

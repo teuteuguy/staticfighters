@@ -49,9 +49,12 @@
 			<div class="panel-body">
 				<table class="table">
 					<tr>
-						<td class="small-map">
-							<div class="small-map" id="map{{shu.id}}"></div>
+						<td>
+							<img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=15&amp;size=272x150&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false">
+							<!-- <div class="small-map" id="map{{shu.id}}"></div> -->
 						</td>
+					</tr>
+					<tr>
 						<td>
 							suid: {{shu.suid}}<br>
 							telephone: {{shu.telephone_number}}<br>
