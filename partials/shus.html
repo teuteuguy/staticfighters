@@ -1,0 +1,67 @@
+<!-- <div class="container-fluid"> -->
+  <!-- <div class="row-fluid"> -->
+    <!-- <div class="span2"> -->
+      <!--Sidebar content-->
+
+<!--       Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="id">id</option>
+        <option value="description">Description</option>
+      </select>
+ -->
+    <!-- </div> -->
+    <!-- <div class="span10"> -->
+      <!--Body content-->
+
+<!-- <div class="panel-group" id="accordion">
+	<div class="panel panel-default nomargins" ng-repeat="shu in shus | filter:query | orderBy:orderProp">
+    	<div class="panel-heading" toggle target="collapse{{ shu.id }}">
+        	<table class=""><tr><td class="panel-title"><h4>{{ shu.description }}</h4></td><td style="text-align:right"><span class="badge">{{ shu.last_known_status_datetime }}</span></td></tr>
+    		</table>
+    	</div>
+    	<div id="collapse{{ shu.id }}" toggleable active-class="in" exclusion-group="accordion1" default="active" class="panel-collapse collapse">
+    		<div class="panel-body">
+	        	<table class="table">
+					<tr>
+						<td class="small-map">
+							<div class="small-map" id="map{{shu.id}}"></div>
+						</td>
+						<td>
+							suid: {{shu.suid}}<br>
+							telephone: {{shu.telephone_number}}<br>
+							GPS: {{shu.last_known_gps_datetime}}<br>
+							GPS Coords: {{shu.last_known_gps_coordinates}}<br>
+							Status: {{shu.status}}
+						</td>
+					</tr>
+				</table>
+      		</div>
+    	</div>    
+	</div>
+</div> -->
+
+
+<div class="list-group shus" id="accordion">
+    <a ng-repeat="shu in shus | filter:query | orderBy:orderProp" class="list-group-item" data-toggle="collapse" data-target="#collapse{{ shu.id }}">
+        {{ shu.description }}<span class="badge"> {{ shu.last_known_status_datetime }}</span>
+        <div id="collapse{{shu.id}}" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table class="table">
+					<tr>
+						<td class="small-map">
+							<div class="small-map" id="map{{shu.id}}"></div>
+						</td>
+						<td>
+							suid: {{shu.suid}}<br>
+							telephone: {{shu.telephone_number}}<br>
+							GPS: {{shu.last_known_gps_datetime}}<br>
+							<!--GPS Coords: {{shu.last_known_gps_coordinates}}<br>-->
+							Status: {{shu.status}}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+    </a>
+</div>
