@@ -19,7 +19,13 @@
 	padding:0px;
 }
 
-.badge-important{background-color:#b94a48;}
+.badge-success {
+	color: #3c763d;
+	background-color: #dff0d8;
+}
+.badge-important {
+	background-color: #b94a48;
+}
 
 .map-img {
 	width: 100%;

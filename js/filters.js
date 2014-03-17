@@ -30,6 +30,18 @@ myAppFilters.filter('ifIsLateVsTimeoutApplyClass', function() {
 
 });
 
+myAppFilters.filter('greenFrom1', function() {
+
+	return function(value, css) {
+
+		if ( value == 0 ) return "";
+		else return css;
+		
+	}
+
+});
+
+
 
 myAppFilters.filter('convertDateStrToAgo', function() {
 	//console.log( "Round 1" );

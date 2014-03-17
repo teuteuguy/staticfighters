@@ -51,7 +51,7 @@
 					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
 						suid
 					</div>
-					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font text-right">
 						{{shu.suid}}
 					</div>
 				</div>
@@ -59,34 +59,42 @@
 					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
 						telephone
 					</div>
-					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font text-right">
 						{{shu.telephone_number}}
 					</div>
 				</div>
-				<img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=17&amp;size=1024x533&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false" class="map-img">
+				<!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=17&amp;size=1024x533&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false" class="map-img"> -->
+				<div class="row">
+					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
+						<strong>{{shu.config.booking_customer_firstname}} {{shu.config.booking_customer_lastname}}</strong>
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font text-right">
+						<span class="badge {{ shu.config.consumed | greenFrom1:'badge-success' }} tiny-font">Consumed</span>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-						Status
+						<strong>Status</strong>
 					</div>
 				</div>
 				<div class="row" ng-repeat="(key, value) in shu.status">
 					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
 						{{key}}
 					</div>
-					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font text-right">
 						{{value}}
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-						Config
+						<strong>Config</strong>
 					</div>
 				</div>
 				<div class="row" ng-repeat="(key, value) in shu.config">
 					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
 						{{key}}
 					</div>
-					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font text-right">
 						{{value}}
 					</div>
 				</div>
