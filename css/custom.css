@@ -8,6 +8,15 @@
 	margin: 0px;
 }
 
+.value-div {
+	word-wrap: break-word;
+}
+.tiny-font {
+	font-size:10px;
+}
+
 .panel-body {
 	padding:0px;
 }
+
+.badge-important{background-color:#b94a48;}

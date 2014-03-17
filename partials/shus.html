@@ -44,26 +44,92 @@
 
 <div class="list-group shus" id="accordion">
     <a ng-repeat="shu in shus | filter:query | orderBy:orderProp" class="list-group-item" data-toggle="collapse" data-target="#collapse{{ shu.id }}">
-        {{ shu.description }}<span class="badge"> {{ shu.last_known_status_datetime }}</span>
+        {{ shu.description }}<span class="badge {{ shu.last_known_status_datetime | ifIsLateVsTimeoutApplyClass:shu.config.checkin_timeout:'badge-important' }}"> {{ shu.last_known_status_datetime | convertDateStrToAgo }}</span>
         <div id="collapse{{shu.id}}" class="panel-collapse collapse">
 			<div class="panel-body">
-				<table class="table">
+				<div class="row">
+					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
+						suid
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+						{{shu.suid}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
+						telephone
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+						{{shu.telephone_number}}
+					</div>
+				</div>
+				<img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=15&amp;size=288x150&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false" width="288" height="150">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+						Status
+					</div>
+				</div>
+				<div class="row" ng-repeat="(key, value) in shu.status">
+					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
+						{{key}}
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+						{{value}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+						Config
+					</div>
+				</div>
+				<div class="row" ng-repeat="(key, value) in shu.config">
+					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
+						{{key}}
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 value-div tiny-font">
+						{{value}}
+					</div>
+				</div>
+
+				<!-- <table class="table">
 					<tr>
-						<td>
-							<img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=15&amp;size=272x150&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false">
-							<!-- <div class="small-map" id="map{{shu.id}}"></div> -->
+						<td class="details">
+							<img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=15&amp;size=288x150&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false">
 						</td>
 					</tr>
 					<tr>
-						<td>
-							suid: {{shu.suid}}<br>
-							telephone: {{shu.telephone_number}}<br>
-							GPS: {{shu.last_known_gps_datetime}}<br>
-							<!--GPS Coords: {{shu.last_known_gps_coordinates}}<br>-->
-							Status: {{shu.status}}
+						<td class="details">
+							suid: {{shu.suid}}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 						</td>
 					</tr>
-				</table>
+					<tr>
+						<td class="details">
+							telephone: {{shu.telephone_number}}
+						</td>
+					</tr>
+					<tr>
+						<td class="details">	
+							GPS: {{shu.last_known_gps_datetime}}
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+
+
+						</td>
+					</tr>
+
+					<tr ng-repeat="(key, value) in shu.status">
+						<td class="details">
+							{{key}}
+						</td>
+						<td class="details text-right" width="50%">
+							<p style="word-wrap: break-word">{{value}}</p>
+						</td>
+					</tr>
+				</table> -->
 			</div>
 		</div>
     </a>
