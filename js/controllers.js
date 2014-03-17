@@ -35,4 +35,5 @@ myAppControllers.controller('ShuListController', function($scope, shubacca) { //
     });
 
     $scope.orderProp = 'description';
+
 });//]);
