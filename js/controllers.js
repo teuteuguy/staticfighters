@@ -28,6 +28,12 @@ myAppControllers.controller('ShuListController', function($scope, shubacca) {
 
         shubacca.getSHULastConfig(shu.id).success(function(config) {
           shu.config = config[0];
+
+          if ( shu.config.config_uid === shu.status.config_uid ) {
+            shu.booking_customer_firstname = shu.config.booking_customer_firstname;
+            shu.booking_customer_lastname = shu.config.booking_customer_lastname;
+          }
+
         });
       });
 

@@ -7,7 +7,7 @@
 // In this case it is a simple value service.
 var myAppServices = angular.module('myApp.services', []);
 
-myAppServices.value('version', '0.2');
+myAppServices.value('version', '0.3');
 
 myAppServices.value('utils', function() {
 
