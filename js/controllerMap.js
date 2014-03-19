@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('controllerMap', []).controller( 'MapController', function($scope, shubacca) {
+angular.module('controllerMap', []).controller( 'controllerMap', function($scope, shubacca) {
   
   $scope.getData = function() {
     console.log( "Getting the data for the Map" );

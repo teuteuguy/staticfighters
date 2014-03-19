@@ -9,18 +9,19 @@ var myApp = angular.module('myApp', [
   'myApp.services',
   'myApp.directives',
   'controllers',
-  'controllerMap'
+  'controllerMap',
+  'controllerShuList'
 //  "mobile-angular-ui",
 //  "mobile-angular-ui.touch",
 //  "mobile-angular-ui.scrollable"
 ]);
 
 myApp.config(function($routeProvider, $locationProvider) {
-  $routeProvider.when('/map', {templateUrl: 'partials/map.html', controller: 'MapController'});
-  $routeProvider.when('/shus', {templateUrl: 'partials/shus.html', controller: 'ShuListController'});
+  $routeProvider.when('/map', {templateUrl: 'partials/map.html', controller: 'controllerMap'});
+  $routeProvider.when('/shus', {templateUrl: 'partials/shus.html', controller: 'controllerShuList'});
   //$routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
   //$routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/shus'});
+  $routeProvider.otherwise({redirectTo: '/map'});
 
   //$locationProvider.html5Mode(true);
 });
