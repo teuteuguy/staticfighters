@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var myAppControllers = angular.module('myApp.controllers', []);
+var myAppControllers = angular.module('controllers', []);
 
 myAppControllers.controller('MyCtrl1', [function() {
 
@@ -12,28 +12,31 @@ myAppControllers.controller('MyCtrl2', [function() {
 
   }]);
 
-myAppControllers.controller('ShuListController', function($scope, shubacca) { // ['$scope', '$http', function($scope, $http) {
-  	//$http.get('http://api.shubacca.com/shu?consumer_key=4a8e628392a504eb746c37e1b0044f0f&sort=id,desc').success(function(data) {
-	shubacca.getAllSHUs().success(function(shus) {
+myAppControllers.controller('ShuListController', function($scope, shubacca) {
 
-  		shus.forEach(function(shu) {  			
+  $scope.getData = function() {
 
-  			shubacca.getSHULastStatus(shu.id).success(function(status) {
+    console.log( "Getting the data for the SHUs" );
 
-  				shu.status = status[0];
+  	shubacca.getAllSHUs().success(function(shus) {
 
-  			});
+      shus.forEach(function(shu) {  			
 
-  			shubacca.getSHULastConfig(shu.id).success(function(config) {
+        shubacca.getSHULastStatus(shu.id).success(function(status) { 
+          shu.status = status[0];
+        });
 
-  				shu.config = config[0];
+        shubacca.getSHULastConfig(shu.id).success(function(config) {
+          shu.config = config[0];
+        });
+      });
 
-  			});
-  		});
-
-    	$scope.shus = shus;
+      $scope.shus = shus;
+    
     });
+  };
+  $scope.getData();
 
-    $scope.orderProp = 'description';
+  $scope.orderProp = 'description';
 
 });//]);

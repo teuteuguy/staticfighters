@@ -1,53 +1,5 @@
-<!-- <div class="container-fluid"> -->
-  <!-- <div class="row-fluid"> -->
-    <!-- <div class="span2"> -->
-      <!--Sidebar content-->
+<div class="list-group shus" id="accordion">
 
-<!--       Search: <input ng-model="query">
-      Sort by:
-      <select ng-model="orderProp">
-        <option value="id">id</option>
-        <option value="description">Description</option>
-      </select>
- -->
-    <!-- </div> -->
-    <!-- <div class="span10"> -->
-      <!--Body content-->
-
-<!-- <div class="panel-group" id="accordion">
-	<div class="panel panel-default nomargins" ng-repeat="shu in shus | filter:query | orderBy:orderProp">
-    	<div class="panel-heading" toggle target="collapse{{ shu.id }}">
-        	<table class=""><tr><td class="panel-title"><h4>{{ shu.description }}</h4></td><td style="text-align:right"><span class="badge">{{ shu.last_known_status_datetime }}</span></td></tr>
-    		</table>
-    	</div>
-    	<div id="collapse{{ shu.id }}" toggleable active-class="in" exclusion-group="accordion1" default="active" class="panel-collapse collapse">
-    		<div class="panel-body">
-	        	<table class="table">
-					<tr>
-						<td class="small-map">
-							<div class="small-map" id="map{{shu.id}}"></div>
-						</td>
-						<td>
-							suid: {{shu.suid}}<br>
-							telephone: {{shu.telephone_number}}<br>
-							GPS: {{shu.last_known_gps_datetime}}<br>
-							GPS Coords: {{shu.last_known_gps_coordinates}}<br>
-							Status: {{shu.status}}
-						</td>
-					</tr>
-				</table>
-      		</div>
-    	</div>    
-	</div>
-</div> -->
-
-<div  class="content">
-
-<!--   <ul class="list-group list-group-table" pull-to-refresh="onReload()">
-    <li class="list-group-item" ng-repeat="state in states" ng-bind="state"></li>
-  </ul>
- -->
-<div class="list-group shus" id="accordion" pull-to-refresh="onReload()">
     <a ng-repeat="shu in shus | filter:query | orderBy:orderProp" class="list-group-item" data-toggle="collapse" data-target="#collapse{{ shu.id }}">
         {{ shu.description }}<span class="badge {{ shu.last_known_status_datetime | ifIsLateVsTimeoutApplyClass:shu.config.checkin_timeout:'badge-important' }}"> {{ shu.last_known_status_datetime | convertDateStrToAgo }}</span>
         <div class="progress">
@@ -73,7 +25,7 @@
 						{{shu.telephone_number}}
 					</div>
 				</div>
-				<img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=17&amp;size=1024x533&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false" class="map-img">
+				<!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center={{shu.last_known_gps_coordinates}}&amp;visual_refresh=true&amp;zoom=17&amp;size=1024x533&amp;maptype=roadmap&amp;markers=color:0x0093ff%7C{{shu.last_known_gps_coordinates}}&amp;sensor=false" class="map-img"> -->
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-4 tiny-font">
 						<strong>{{shu.config.booking_customer_firstname}} {{shu.config.booking_customer_lastname}}</strong>
@@ -151,5 +103,5 @@
 			</div>
 		</div>
     </a>
-</div>
+	<a class="list-group-item text-center" ng-click="getData()"> Fist the wookie to refresh!</a>
 </div>

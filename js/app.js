@@ -8,16 +8,18 @@ var myApp = angular.module('myApp', [
   'myApp.progressBarColorFilters',
   'myApp.services',
   'myApp.directives',
-  'myApp.controllers'
+  'controllers',
+  'controllerMap'
 //  "mobile-angular-ui",
 //  "mobile-angular-ui.touch",
 //  "mobile-angular-ui.scrollable"
 ]);
 
 myApp.config(function($routeProvider, $locationProvider) {
+  $routeProvider.when('/map', {templateUrl: 'partials/map.html', controller: 'MapController'});
   $routeProvider.when('/shus', {templateUrl: 'partials/shus.html', controller: 'ShuListController'});
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
+  //$routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
+  //$routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
   $routeProvider.otherwise({redirectTo: '/shus'});
 
   //$locationProvider.html5Mode(true);
