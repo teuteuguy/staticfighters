@@ -41,10 +41,20 @@
 	</div>
 </div> -->
 
+<div  class="content">
 
-<div class="list-group shus" id="accordion">
+<!--   <ul class="list-group list-group-table" pull-to-refresh="onReload()">
+    <li class="list-group-item" ng-repeat="state in states" ng-bind="state"></li>
+  </ul>
+ -->
+<div class="list-group shus" id="accordion" pull-to-refresh="onReload()">
     <a ng-repeat="shu in shus | filter:query | orderBy:orderProp" class="list-group-item" data-toggle="collapse" data-target="#collapse{{ shu.id }}">
         {{ shu.description }}<span class="badge {{ shu.last_known_status_datetime | ifIsLateVsTimeoutApplyClass:shu.config.checkin_timeout:'badge-important' }}"> {{ shu.last_known_status_datetime | convertDateStrToAgo }}</span>
+        <div class="progress">
+			<div class="progress-bar {{ shu.status.fuel_battery_state | progressBarColor }}" role="progressbar" aria-valuenow="{{ shu.status.fuel_battery_state }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ shu.status.fuel_battery_state }}%">
+				<span class="sr-only">{{ shu.status.fuel_battery_state }}% Complete (success)</span>
+			</div>
+		</div>
         <div id="collapse{{shu.id}}" class="panel-collapse collapse">
 			<div class="panel-body">
 				<div class="row">
@@ -141,4 +151,5 @@
 			</div>
 		</div>
     </a>
+</div>
 </div>

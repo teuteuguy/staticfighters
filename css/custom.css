@@ -35,3 +35,8 @@
 .map-canvas {
 	height: 100%;
 }
+
+.progress {
+	height: 5px;
+	margin-bottom:0px;
+}
