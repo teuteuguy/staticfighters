@@ -2,7 +2,7 @@
 
     <a ng-repeat="shu in shus | filter:query | orderBy:orderProp" class="list-group-item" data-toggle="collapse" data-target="#collapse{{ shu.id }}">
         {{ shu.description }}<span class="badge {{ shu.last_known_status_datetime | ifIsLateVsTimeoutApplyClass:shu.config.checkin_timeout:'badge-important' }}"> {{ shu.last_known_status_datetime | convertDateStrToAgo }}</span>
-		<p class="tiny-font" style="margin-bottom:5px;">Waiting for: <strong>{{ shu.booking_customer_firstname }} {{ shu.booking_customer_lastname }}</strong></p>
+		<p class="tiny-font" style="margin-bottom:5px;">Booked for: <strong>{{ shu.booking_customer_firstname }} {{ shu.booking_customer_lastname }}</strong></p>
         <div class="progress">
 			<div class="progress-bar {{ shu.status.fuel_battery_state | progressBarColor }}" role="progressbar" aria-valuenow="{{ shu.status.fuel_battery_state }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ shu.status.fuel_battery_state }}%">
 				<span class="sr-only">{{ shu.status.fuel_battery_state }}% Complete (success)</span>
