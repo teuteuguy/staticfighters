@@ -22,7 +22,7 @@ myAppFilters.filter('ifIsLateVsTimeoutApplyClass', function() {
 		var date = new Date( "" + dateStr.replace( /-/g,'/' ) );
 		var interval = Math.floor( Math.abs( nowUtc - date ) / 1000 );
 
-		if ( interval > vsTimeout ) return css;
+		if ( interval > vsTimeout + 1.05 ) return css;
 
 		return "";
 

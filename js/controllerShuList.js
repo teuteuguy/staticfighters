@@ -19,25 +19,34 @@ angular.module('controllerShuList', []).controller('controllerShuList', function
 
       shus.forEach(function(shu) {  			
 
-        var statusLoaded = false;
-        var configLoaded = false;
+        shu.statusLoaded = false;
+        //shu.configLoaded = false;
 
-        shubacca.getSHULastStatus(shu.id).success(function(status) { 
+        shubacca.getSHULastStatusWithConfig(shu.id).success(function(status) {
+
           shu.status = status[0];
-          if ( configLoaded ) {
-            setCustomerName( shu );
-          }
-          statusLoaded = true;
-        });
+          shu.config = shu.status.config;
+          delete shu.status.config;
+          shu.statusLoaded = 0;
 
-        shubacca.getSHULastConfig(shu.id).success(function(config) {
-          shu.config = config[0];
-
-          if ( statusLoaded ) {
-            setCustomerName( shu );
-          }
-          configLoaded = true;
         });
+        
+        // shubacca.getSHULastStatus(shu.id).success(function(status) { 
+        //   shu.status = status[0];
+        //   if ( shu.configLoaded ) {
+        //     setCustomerName( shu );
+        //   }
+        //   shu.statusLoaded = true;
+        // });
+
+        // shubacca.getSHULastConfig(shu.id).success(function(config) {
+        //   shu.config = config[0];
+
+        //   if ( shu.statusLoaded ) {
+        //     setCustomerName( shu );
+        //   }
+        //   shu.configLoaded = true;
+        // });
       });
 
       $scope.shus = shus;

@@ -19,4 +19,15 @@ progressBarColorFilters.filter('progressBarColor', function() {
 	}
 });
 
+progressBarColorFilters.filter('progressBarStrict', function() {
+
+	return function(percentage) {
+
+		if ( percentage > 100 ) {
+			return 100
+		} else {
+			return percentage;
+		}
+	}
+});
 

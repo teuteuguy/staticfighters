@@ -1,4 +1,16 @@
 
-<div id="map-canvas"></div>
+<google-map center="map.center" zoom="map.zoom">
 
-<a class="list-group-item text-center" ng-click="getData()"> Fist the wookie to refresh!</a>
+	<marker coords='{expression}'
+	    icon='{expression}'
+	    click='{expression}'
+	    options='{expression}'
+	    events='{expression}'>
+	</marker>
+
+</google-map>
+
+<div class="navbar-fixed-bottom">
+	<a class="list-group-item text-center navbar-fixed-bottom" ng-click="getData()"> Fist the wookie to refresh!</a>
+</div>
+<!-- <a class="list-group-item text-center" ng-click="getData()"> Fist the wookie to refresh!</a> -->

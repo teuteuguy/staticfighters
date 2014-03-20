@@ -4,13 +4,15 @@
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp', [
   'ngRoute',
+  'ngAnimate',
   'myApp.filters',
   'myApp.progressBarColorFilters',
   'myApp.services',
   'myApp.directives',
   'controllers',
   'controllerMap',
-  'controllerShuList'
+  'controllerShuList',
+  'google-maps'
 //  "mobile-angular-ui",
 //  "mobile-angular-ui.touch",
 //  "mobile-angular-ui.scrollable"
