@@ -11,6 +11,16 @@ myAppFilters.filter('interpolate', ['version', function(version) {
 }]);
 
 
+
+myAppFilters.filter('isVirtual', function() {
+	return function(items, options) {
+		console.log(items);
+		console.log(options);
+		return true;
+	}
+});
+
+
 myAppFilters.filter('ifIsLateVsTimeoutApplyClass', function() {
 
 	return function(dateStr, vsTimeout, css) {

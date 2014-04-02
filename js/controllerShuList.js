@@ -15,38 +15,49 @@ angular.module('controllerShuList', []).controller('controllerShuList', function
 
     console.log( "Getting the data for the SHUs" );
 
-  	shubacca.getAllSHUs().success(function(shus) {
+    var shus = [];
 
-      shus.forEach(function(shu) {  			
+  	shubacca.getAllSHUs().success(function(temp_shus) {
 
-        shu.statusLoaded = false;
-        //shu.configLoaded = false;
+      temp_shus.forEach(function(shu) {  			
 
-        shubacca.getSHULastStatusWithConfig(shu.id).success(function(status) {
+        if ( shu.virtual == 1 ) {
 
-          shu.status = status[0];
-          shu.config = shu.status.config;
-          delete shu.status.config;
-          shu.statusLoaded = 0;
+          //delete shu;
 
-        });
+        }
+        else {
+          //console.log( shu.virtual );
+
+          shu.statusLoaded = false;
+
+          shubacca.getSHULastStatusWithConfig(shu.id).success(function(status) {
+
+            shu.status = status[0];
+            shu.config = shu.status.config;
+            delete shu.status.config;
+            shu.statusLoaded = 0;
+
+          });
+
+          shus.push( shu );
+
+        }
         
-        // shubacca.getSHULastStatus(shu.id).success(function(status) { 
-        //   shu.status = status[0];
-        //   if ( shu.configLoaded ) {
-        //     setCustomerName( shu );
-        //   }
-        //   shu.statusLoaded = true;
-        // });
+        // var data = google.visualization.arrayToDataTable([
+        //   ['Year', 'Sales', 'Expenses'],
+        //   ['2004', 1000, 400],
+        //   ['2005', 1170, 460],
+        //   ['2006', 660, 1120],
+        //   ['2007', 1030, 540]
+        // ]);
+        // var options = {
+        //   title: 'Company Performance'
+        // };
+        //var chart = new google.visualization.LineChart( document.getElementById( 'chartdiv' ) );
+   
+        //chart.draw(data, options);
 
-        // shubacca.getSHULastConfig(shu.id).success(function(config) {
-        //   shu.config = config[0];
-
-        //   if ( shu.statusLoaded ) {
-        //     setCustomerName( shu );
-        //   }
-        //   shu.configLoaded = true;
-        // });
       });
 
       $scope.shus = shus;

@@ -13,9 +13,6 @@ var myApp = angular.module('myApp', [
   'controllerMap',
   'controllerShuList',
   'google-maps'
-//  "mobile-angular-ui",
-//  "mobile-angular-ui.touch",
-//  "mobile-angular-ui.scrollable"
 ]);
 
 myApp.config(function($routeProvider, $locationProvider) {
